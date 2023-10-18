@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -408,7 +408,7 @@ class _SearchFieldState<T> extends State<SearchField<T>> {
     if (oldWidget.controller != widget.controller) {
       searchController = widget.controller ?? TextEditingController();
     }
-    if (oldWidget.suggestions != widget.suggestions) {
+    if (!listEquals(oldWidget.suggestions, widget.suggestions)) {
       suggestionStream.sink.add(widget.suggestions);
     }
     if (oldWidget.scrollbarDecoration != widget.scrollbarDecoration) {
